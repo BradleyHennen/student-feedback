@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Review from '../Review/Review';
 import Header from '../Header/Header'
 
@@ -9,11 +10,17 @@ class Understanding extends Component {
     }
 
     nextPageLoad = () => {
-        const action = {type: 'ADD_UNDERSTANDING', payload: this.state.feeling}
+        const action = {type: 'ADD_UNDERSTANDING', payload: this.state.understanding}
         console.log('Action', action);
         
         this.props.dispatch(action);
         this.props.history.push('/support')
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            understanding: event.target.value,
+        })
     }
 
     render() {
@@ -34,4 +41,8 @@ class Understanding extends Component {
     }
 }
 
-export default Understanding;
+const mapReduxStateToProps = reduxState => ({
+    reduxState
+  });
+  
+  export default connect(mapReduxStateToProps)(Understanding);

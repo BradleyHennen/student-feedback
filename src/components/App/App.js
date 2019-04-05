@@ -6,10 +6,8 @@ import './App.css';
 import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
 import Support from '../Support/Support';
-import Comments from '../Comments/Comments'
-
-
-
+import Comments from '../Comments/Comments';
+import Review from '../Review/Review';
 
 class App extends Component {
   render() {
@@ -19,7 +17,9 @@ class App extends Component {
           <Route exact path='/' component={Feeling}/>
           <Route path='/understanding' component={Understanding}/>
           <Route path='/support' component={Support}/>
-          <Route path='/comments' component={Comments}/>
+          <Route path='/comment' component={Comments}/>
+          <Route path='/review' component={Review}/>
+
         </div>
         
       </Router>

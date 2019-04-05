@@ -1,11 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Review from '../Review/Review';
 import Header from '../Header/Header'
 
-class Support extends Component {
+class Comment extends Component {
+
+    state = {
+        comment: '',
+    }
 
     nextPageLoad = () => {
-        this.props.history.push('/')
+        const action = {type: 'ADD_COMMENT', payload: this.state.comment};
+        this.flip();
+        console.log('Action', action);
+        
+        this.props.dispatch(action);
+        this.props.history.push('/review')
+    }
+
+    flip = () => {
+        const action = {type: 'FLIP_BUTTON', payload: false};
+        this.props.dispatch(action);
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            comment: event.target.value,
+        })
     }
 
     render() {
@@ -16,6 +37,8 @@ class Support extends Component {
                 <input
                     type="text"
                     placeholder="Comments"
+                    value={this.state.comment}
+                    onChange={this.handleChange}
                 />
                 <button onClick={this.nextPageLoad}>NEXT</button>
                 <Review />
@@ -24,4 +47,8 @@ class Support extends Component {
     }
 }
 
-export default Support;
+const mapReduxStateToProps = reduxState => ({
+    reduxState
+  });
+  
+  export default connect(mapReduxStateToProps)(Comment);
