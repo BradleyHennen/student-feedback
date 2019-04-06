@@ -8,10 +8,15 @@ class Review extends Component {
         console.log('flip', this.props.reduxState.reviewComplete);
         
         if (this.props.reduxState.reviewComplete === true) {
-            return <button disabled>Incomplete</button>
+            return <button disabled>Incomplete</button>;
         } else if (this.props.reduxState.reviewComplete === false) {
-            return <button >Complete</button>
+            return <button onClick={this.addReview}>Complete</button>;
         }
+    }
+
+    addReview = () => {
+        this.props.history.push('/completed-page');
+        this.props.addReview();
     }
     
     render() {
