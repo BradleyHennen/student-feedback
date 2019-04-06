@@ -9,10 +9,11 @@ import Support from '../Support/Support';
 import Comments from '../Comments/Comments';
 import Review from '../Review/Review';
 import CompletedPage from '../CompletedPage/CompletedPage';
+import Admin from '../Admin/Admin';
 
 class App extends Component {
 
-  addReview = () => {
+  addFeedback = () => {
     Axios({
       method: 'POST',
       url: '/completed',
@@ -23,7 +24,7 @@ class App extends Component {
         comments: this.props.reduxState.commentsReducer,
       },
     }).then((response) => {
-      console.log('Added review');
+      console.log('Added feedback');
     }).catch((error) => {
       console.log('Error posting new review');
       alert('Error posting new review');
@@ -35,12 +36,17 @@ class App extends Component {
       method: 'GET',
       url: '/completed',
     }).then((response) => {
-      console.log('Getting feedback', response);
-      //add function
+      console.log('Getting feedback', response.data);
+      const action = {type: 'GET_FEEDBACK', payload: response.data};
+      this.props.dispatch(action);
     }).catch((error) => {
       console.log('Error getting feedback', error);
       alert('Error getting feedback')
     })
+  }
+
+  componentDidMount = () => {
+    this.getFeedback();
   }
 
   render() {
@@ -52,10 +58,12 @@ class App extends Component {
           <Route path='/support' component={Support}/>
           <Route path='/comment' component={Comments}/>
           <Route path='/completed-page' component={CompletedPage}/>
+          <Route path='/completed-page' component={CompletedPage}/>
+          <Route path='/admin' component={Admin}/>
           <Route
-          	exact path='/review'
+          	path='/review'
           	render={(props) => <Review {...props}
-          	addReview={this.addReview} />}
+          	addReview={this.addFeedback} />}
           />
 
         </div>

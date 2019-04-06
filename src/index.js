@@ -58,6 +58,13 @@ const reviewComplete = (state = true, action) => {
    return state;
 }
 
+const getFeedback = (state = [], action) => {
+   if(action.type === 'GET_FEEDBACK') {
+      return state = action.payload;
+   }
+   return state;
+}
+
 const storeInstance = createStore(
    combineReducers({
        feelingsReducer,
@@ -65,6 +72,7 @@ const storeInstance = createStore(
        supportedReducer,
        commentsReducer,
        reviewComplete,
+       getFeedback,
    }),
    applyMiddleware(logger),
 )
