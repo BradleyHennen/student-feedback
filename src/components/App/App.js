@@ -45,6 +45,21 @@ class App extends Component {
     })
   }
 
+  deleteFeedback = () => {
+    console.log('delete id', this.props.reduxState.deleteFeedback);
+    
+    let id = this.props.reduxState.deleteFeedback;
+    Axios({
+      method: 'DELETE',
+      url: `/completed/${id}`
+    }).then((response) => {
+      this.getFeedback();
+    }).catch((error) => {
+      console.log('Something went wrong deleteing feedback', error);
+      alert(`Couldn't delete feedback`);
+    })
+  }
+
   componentDidMount = () => {
     this.getFeedback();
   }
