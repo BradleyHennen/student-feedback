@@ -10,13 +10,13 @@ class Review extends Component {
         if (this.props.reduxState.reviewComplete === true) {
             return <button disabled>Incomplete</button>;
         } else if (this.props.reduxState.reviewComplete === false) {
-            return <button onClick={this.addReview}>Complete</button>;
+            return <button onClick={this.addFeedback}>Complete</button>;
         }
     }
 
-    addReview = () => {
+    addFeedback = () => {
         this.props.history.push('/completed-page');
-        this.props.addReview();
+        this.props.addFeedback();
     }
     
     render() {

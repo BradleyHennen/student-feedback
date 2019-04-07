@@ -16,13 +16,20 @@ class Admin extends Component {
                             <td>Comprehension</td>
                             <td>Support</td>
                             <td>Comments</td>
+                            <td>Flagged</td>
                             <td>Delete</td>
+                            <td>Flag</td>
                         </tr>
                     </thead>
                     <tbody>
                         {this.props.reduxState.getFeedback.map(feedback => {
                             return (
-                                <AdminListItem feedback={feedback} key={feedback.id}/>
+                                <AdminListItem 
+                                    feedback={feedback} 
+                                    deleteFeedback={this.props.deleteFeedback} 
+                                    flagFeedback={this.props.flagFeedback}
+                                    key={feedback.id}
+                                />
                             )
                         })}
                     </tbody>

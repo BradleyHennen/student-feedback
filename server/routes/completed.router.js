@@ -42,4 +42,16 @@ router.delete('/:id', (req, res) => {
     })
 })
 
+router.put('/:id', (req, res) => {
+    console.log('Flagging Feedback');
+    let feedbackId = req.params.id;
+    let sqlText = 'UPDATE "feedback" SET "flagged" = NOT "flagged" WHERE "id" = $1'
+    pool.query(sqlText, [feedbackId])
+    .then((results) => {
+        res.sendStatus(201);
+    }).catch((error) => {
+        res.sendStatus(500);
+    })
+})
+
 module.exports = router;

@@ -45,10 +45,7 @@ class App extends Component {
     })
   }
 
-  deleteFeedback = () => {
-    console.log('delete id', this.props.reduxState.deleteFeedback);
-    
-    let id = this.props.reduxState.deleteFeedback;
+  deleteFeedback = (id) => {
     Axios({
       method: 'DELETE',
       url: `/completed/${id}`
@@ -57,6 +54,18 @@ class App extends Component {
     }).catch((error) => {
       console.log('Something went wrong deleteing feedback', error);
       alert(`Couldn't delete feedback`);
+    })
+  }
+
+  flagFeedback = (id) => {
+    Axios({
+      method: 'PUT',
+      url: `/completed/${id}`
+    }).then((response) => {
+      this.getFeedback();
+    }).catch((error) => {
+      console.log('Something went wrong flagging feedback', error);
+      alert('Error flagging feedback');
     })
   }
 
@@ -73,12 +82,16 @@ class App extends Component {
           <Route path='/support' component={Support}/>
           <Route path='/comment' component={Comments}/>
           <Route path='/completed-page' component={CompletedPage}/>
-          <Route path='/completed-page' component={CompletedPage}/>
-          <Route path='/admin' component={Admin}/>
+          <Route
+          	path='/admin'
+          	render={(props) => <Admin {...props}
+          	deleteFeedback={this.deleteFeedback} 
+            flagFeedback={this.flagFeedback}/>}
+          />
           <Route
           	path='/review'
           	render={(props) => <Review {...props}
-          	addReview={this.addFeedback} />}
+          	addFeedback={this.addFeedback} />}
           />
 
         </div>
