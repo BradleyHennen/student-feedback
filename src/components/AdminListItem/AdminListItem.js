@@ -1,7 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+    root: {
+      color: theme.palette.text.primary,
+    },
+    icon: {
+      margin: theme.spacing.unit,
+      fontSize: 32,
+    },
+  });
+  
+  
 
 class Admin extends Component {
+   
 
     handleClickDelete = (event) => {    
         this.props.deleteFeedback(event.target.value);
@@ -39,7 +55,7 @@ class Admin extends Component {
     }
 
     render() {
-
+        const { classes } = this.props;
         return (
             <tr>
                 <td>{this.props.feedback.feeling}</td>
@@ -48,11 +64,11 @@ class Admin extends Component {
                 <td>{this.props.feedback.comments}</td>
                 <td>{this.flagRender()}</td>
                 <td>
-                    <button 
+                   <DeleteIcon 
                         onClick={this.handleClickDelete}
-                        value={this.props.feedback.id}>
-                        Delete
-                    </button>
+                        value={this.props.feedback.id} 
+                        className={classes.icon} 
+                    />
                 </td>
                 <td>
                    {this.flipFlagButton()}
@@ -63,8 +79,12 @@ class Admin extends Component {
     }
 }
 
+Admin.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+
 const mapReduxStateToProps = reduxState => ({
     reduxState
   });
   
-  export default connect(mapReduxStateToProps)(Admin);
+  export default connect(mapReduxStateToProps)(withStyles(styles)(Admin));
