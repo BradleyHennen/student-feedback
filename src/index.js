@@ -25,34 +25,34 @@ import { logger } from 'redux-logger';
 
 const feelingsReducer = (state = [], action) => {
    if (action.type === 'ADD_FEELING') {
-       return action.payload
+      return action.payload
    }
    return state;
 }
 
 const understandingReducer = (state = [], action) => {
    if (action.type === 'ADD_UNDERSTANDING') {
-       return action.payload
+      return action.payload
    }
    return state;
 }
 
 const supportedReducer = (state = [], action) => {
    if (action.type === 'ADD_SUPPORT') {
-       return action.payload
+      return action.payload
    }
    return state;
 }
 
 const commentsReducer = (state = [], action) => {
    if (action.type === 'ADD_COMMENT') {
-       return action.payload
+      return action.payload
    }
    return state;
 }
 
 const reviewComplete = (state = true, action) => {
-   if(action.type === 'FLIP_BUTTON') {
+   if (action.type === 'FLIP_BUTTON') {
       if (action.payload === false) {
          return state = action.payload;
       }
@@ -61,7 +61,7 @@ const reviewComplete = (state = true, action) => {
 }
 
 const getFeedback = (state = [], action) => {
-   if(action.type === 'GET_FEEDBACK') {
+   if (action.type === 'GET_FEEDBACK') {
       return state = action.payload;
    }
    return state;
@@ -69,21 +69,21 @@ const getFeedback = (state = [], action) => {
 
 const storeInstance = createStore(
    combineReducers({
-       feelingsReducer,
-       understandingReducer,
-       supportedReducer,
-       commentsReducer,
-       reviewComplete,
-       getFeedback,
+      feelingsReducer,
+      understandingReducer,
+      supportedReducer,
+      commentsReducer,
+      reviewComplete,
+      getFeedback,
    }),
    applyMiddleware(logger),
 )
 
 ReactDOM.render(
-    <Provider store={storeInstance}>
-       <App />
-    </Provider>,
-    document.getElementById('root')
- );
- 
+   <Provider store={storeInstance}>
+      <App />
+   </Provider>,
+   document.getElementById('root')
+);
+
 registerServiceWorker();

@@ -15,7 +15,6 @@ const styles = theme => ({
         flexGrow: 1,
         backgroundColor: theme.palette.background.paper,
         padding: theme.spacing.unit * 2,
-
     },
     button: {
         margin: 20,
@@ -33,13 +32,13 @@ class Review extends Component {
         if (this.props.reduxState.reviewComplete === true) {
             return <Button disabled variant="contained" color="primary">Incomplete</Button>;
         } else if (this.props.reduxState.reviewComplete === false) {
-            return  <Button 
-                        onClick={this.addFeedback} 
-                        variant="contained" 
-                        color="primary">
-                        Complete
+            return <Button
+                onClick={this.addFeedback}
+                variant="contained"
+                color="primary">
+                Complete
                     </Button>;
-        } 
+        }
     }
 
     //Adds feedback to database and changes view

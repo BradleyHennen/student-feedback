@@ -24,9 +24,9 @@ class Admin extends Component {
                     <tbody>
                         {this.props.reduxState.getFeedback.map(feedback => {
                             return (
-                                <AdminListItem 
-                                    feedback={feedback} 
-                                    deleteFeedback={this.props.deleteFeedback} 
+                                <AdminListItem
+                                    feedback={feedback}
+                                    deleteFeedback={this.props.deleteFeedback}
                                     flagFeedback={this.props.flagFeedback}
                                     key={feedback.id}
                                 />
@@ -41,6 +41,6 @@ class Admin extends Component {
 
 const mapReduxStateToProps = reduxState => ({
     reduxState
-  });
-  
-  export default connect(mapReduxStateToProps)(Admin);
+});
+
+export default connect(mapReduxStateToProps)(Admin);

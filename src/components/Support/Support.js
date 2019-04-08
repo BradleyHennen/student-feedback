@@ -18,7 +18,7 @@ const styles = {
         height: 140,
         width: 100,
     },
-  };
+};
 
 class Support extends Component {
 
@@ -29,7 +29,7 @@ class Support extends Component {
     //Adds users support score to reducer and changes page on click 
     nextPageLoad = () => {
         let number = Number(this.state.selectedValue)
-        const action = {type: 'ADD_SUPPORT', payload: number}
+        const action = { type: 'ADD_SUPPORT', payload: number }
         this.props.dispatch(action);
         this.props.history.push('/comment')
     }
@@ -47,7 +47,7 @@ class Support extends Component {
         return (
             <section>
                 <Header />
-                    <Paper>
+                <Paper>
                     <Typography variant="h4" gutterBottom>
                         How well are you being supported?
                     </Typography>
@@ -91,7 +91,7 @@ class Support extends Component {
                     <Button onClick={this.nextPageLoad} variant="contained" color="primary" className={classes.button}>
                         NEXT
                     </Button>
-                    </Paper>
+                </Paper>
                 <Review />
             </section>
         );
@@ -100,10 +100,10 @@ class Support extends Component {
 
 Support.propTypes = {
     classes: PropTypes.object.isRequired,
-  };
+};
 
 const mapReduxStateToProps = reduxState => ({
     reduxState
-  });
-  
-  export default connect(mapReduxStateToProps)(withStyles(styles)(Support));
+});
+
+export default connect(mapReduxStateToProps)(withStyles(styles)(Support));

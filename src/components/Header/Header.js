@@ -21,10 +21,10 @@ class Header extends Component {
     const { classes } = this.props;
 
     return (
-        <header className={classes.header}>
-          <Typography className={classes.text} variant="h3" gutterBottom>Feedback!</Typography>
-          <Typography className={classes.text} variant="h5" gutterBottom><i>Don't forget it!</i></Typography>
-        </header>
+      <header className={classes.header}>
+        <Typography className={classes.text} variant="h3" gutterBottom>Feedback!</Typography>
+        <Typography className={classes.text} variant="h5" gutterBottom><i>Don't forget it!</i></Typography>
+      </header>
     );
   }
 }

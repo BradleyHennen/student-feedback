@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route} from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 import './App.css';
@@ -39,7 +39,7 @@ class App extends Component {
       url: '/completed',
     }).then((response) => {
       console.log('Getting feedback', response.data);
-      const action = {type: 'GET_FEEDBACK', payload: response.data};
+      const action = { type: 'GET_FEEDBACK', payload: response.data };
       this.props.dispatch(action);
     }).catch((error) => {
       console.log('Error getting feedback', error);
@@ -81,25 +81,25 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Route exact path='/' component={Feeling}/>
-          <Route path='/understanding' component={Understanding}/>
-          <Route path='/support' component={Support}/>
-          <Route path='/comment' component={Comments}/>
-          <Route path='/completed-page' component={CompletedPage}/>
+          <Route exact path='/' component={Feeling} />
+          <Route path='/understanding' component={Understanding} />
+          <Route path='/support' component={Support} />
+          <Route path='/comment' component={Comments} />
+          <Route path='/completed-page' component={CompletedPage} />
           <Route
-          	path='/admin'
-          	render={(props) => <Admin {...props}
-          	deleteFeedback={this.deleteFeedback} 
-            flagFeedback={this.flagFeedback}/>}
+            path='/admin'
+            render={(props) => <Admin {...props}
+              deleteFeedback={this.deleteFeedback}
+              flagFeedback={this.flagFeedback} />}
           />
           <Route
-          	path='/review'
-          	render={(props) => <Review {...props}
-          	addFeedback={this.addFeedback} />}
+            path='/review'
+            render={(props) => <Review {...props}
+              addFeedback={this.addFeedback} />}
           />
 
         </div>
-        
+
       </Router>
     );
   }
