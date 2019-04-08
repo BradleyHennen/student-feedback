@@ -28,9 +28,9 @@ class Review extends Component {
     };
 
     //Flips button to be functional when review is complete
-    flip = (reload) => {
+    flip = () => {
         console.log('flip', this.props.reduxState.reviewComplete);
-        if (this.props.reduxState.reviewComplete === true || reload === true) {
+        if (this.props.reduxState.reviewComplete === true) {
             return <Button disabled variant="contained" color="primary">Incomplete</Button>;
         } else if (this.props.reduxState.reviewComplete === false) {
             return  <Button 
@@ -46,6 +46,7 @@ class Review extends Component {
     addFeedback = () => {
         this.props.history.push('/completed-page');
         this.props.addFeedback();
+        window.location.reload()
     }
 
     render() {
