@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
     root: {
@@ -14,8 +13,6 @@ const styles = theme => ({
     },
   });
   
-  
-
 class Admin extends Component {
    
 
@@ -55,26 +52,24 @@ class Admin extends Component {
     }
 
     render() {
-        const { classes } = this.props;
         return (
-            <tr>
-                <td>{this.props.feedback.feeling}</td>
-                <td>{this.props.feedback.understanding}</td>
-                <td>{this.props.feedback.support}</td>
-                <td>{this.props.feedback.comments}</td>
-                <td>{this.flagRender()}</td>
-                <td>
-                   <DeleteIcon 
-                        onClick={this.handleClickDelete}
-                        value={this.props.feedback.id} 
-                        className={classes.icon} 
-                    />
-                </td>
-                <td>
-                   {this.flipFlagButton()}
-                </td>
-            </tr>
-                  
+                <tr>
+                    <td>{this.props.feedback.feeling}</td>
+                    <td>{this.props.feedback.understanding}</td>
+                    <td>{this.props.feedback.support}</td>
+                    <td>{this.props.feedback.comments}</td>
+                    <td>{this.flagRender()}</td>
+                    <td>
+                    <button
+                            onClick={this.handleClickDelete}
+                            value={this.props.feedback.id} 
+                            >Delete</button>
+                        
+                    </td>
+                    <td>
+                    {this.flipFlagButton()}
+                    </td>
+                </tr>  
         );
     }
 }

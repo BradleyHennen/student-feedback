@@ -7,19 +7,18 @@ import ListItem from '@material-ui/core/ListItem';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+
 
 const styles = theme => ({
     root: {
-        width: '100%',
-        maxWidth: 360,
         flexGrow: 1,
         backgroundColor: theme.palette.background.paper,
-    },
-    paper: {
-        height: 140,
-        width: 100,
         padding: theme.spacing.unit * 2,
 
+    },
+    button: {
+        margin: 20,
     },
 });
 
@@ -30,11 +29,10 @@ class Review extends Component {
 
     flip = () => {
         console.log('flip', this.props.reduxState.reviewComplete);
-
         if (this.props.reduxState.reviewComplete === true) {
-            return <button disabled>Incomplete</button>;
+            return <Button disabled variant="contained" color="primary">Incomplete</Button>;
         } else if (this.props.reduxState.reviewComplete === false) {
-            return <button onClick={this.addFeedback}>Complete</button>;
+            return <Button onClick={this.addFeedback} variant="contained" color="primary">Complete</Button>;
         }
     }
 
@@ -47,9 +45,14 @@ class Review extends Component {
         const { classes } = this.props;
 
         return (
-            <Grid container className={classes.root} spacing={24}  >
-                <Grid item xs={12} >
-                        <Paper>
+            <div className={classes.root}>
+                <Grid container direction="column"
+                    justify="center"
+                    alignItems="center"
+                    spacing={24}
+                >
+                    <Grid item xs={12}>
+                        <Paper className={classes.root}>
                             <Typography variant="h4" gutterBottom>
                                 Review Your Feedback:
                             </Typography>
@@ -58,11 +61,12 @@ class Review extends Component {
                                 <ListItem>Undstanding: {this.props.reduxState.understandingReducer}</ListItem>
                                 <ListItem>Supported: {this.props.reduxState.supportedReducer}</ListItem>
                                 <ListItem>Comments: {this.props.reduxState.commentsReducer}</ListItem>
-                                <ListItem button>{this.flip()}</ListItem>
+                                {this.flip()}
                             </List>
                         </Paper>
+                    </Grid>
                 </Grid>
-            </Grid>
+            </div>
         );
     }
 }
