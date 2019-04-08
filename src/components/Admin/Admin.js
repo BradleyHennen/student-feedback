@@ -12,13 +12,13 @@ class Admin extends Component {
                 <table>
                     <thead>
                         <tr>
-                            <td>Feeling</td>
-                            <td>Comprehension</td>
-                            <td>Support</td>
-                            <td>Comments</td>
-                            <td>Flagged</td>
-                            <td>Delete</td>
-                            <td>Flag</td>
+                            <th>Feeling</th>
+                            <th>Comprehension</th>
+                            <th>Support</th>
+                            <th>Comments</th>
+                            <th>Flagged</th>
+                            <th>Delete</th>
+                            <th>Flag</th>
                         </tr>
                     </thead>
                     <tbody>
