@@ -26,6 +26,7 @@ class Understanding extends Component {
         selectedValue: "",
     }
 
+    //Adds users understanding score to reducer and changes page on click 
     nextPageLoad = () => {
         let number = Number(this.state.selectedValue)
         const action = {type: 'ADD_UNDERSTANDING', payload: number}
@@ -33,6 +34,7 @@ class Understanding extends Component {
         this.props.history.push('/support')
     }
 
+    //Updates state to reflect users input
     handleChange = (event) => {
         this.setState({
             selectedValue: event.target.value,       

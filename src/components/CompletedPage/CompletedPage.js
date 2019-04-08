@@ -19,6 +19,11 @@ const styles = theme => ({
 class CompletedPage extends Component {
 
     handleClick = () => {
+        this.props.dispatch({type: 'ADD_FEELING', payload: []});
+        this.props.dispatch({type: 'ADD_UNDERSTANDING', payload: []});
+        this.props.dispatch({type: 'ADD_SUPPORT', payload: []});
+        this.props.dispatch({type: 'ADD_COMMENT', payload: []});
+        this.props.dispatch({type: 'FLIP_BUTTON', payload: true});
         this.props.history.push('/');
     }
 

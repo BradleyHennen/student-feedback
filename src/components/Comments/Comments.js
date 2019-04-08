@@ -26,6 +26,7 @@ class Comment extends Component {
         comment: '',
     }
 
+    //Adds users comments to reducer and changes page on click
     nextPageLoad = () => {
         const action = {type: 'ADD_COMMENT', payload: this.state.comment};
         this.flip();
@@ -35,11 +36,13 @@ class Comment extends Component {
         this.props.history.push('/review')
     }
 
+    //Flips boolean to trigger button flip on review page
     flip = () => {
         const action = {type: 'FLIP_BUTTON', payload: false};
         this.props.dispatch(action);
     }
 
+    //Updates state to reflect users input
     handleChange = (event) => {
         this.setState({
             comment: event.target.value,

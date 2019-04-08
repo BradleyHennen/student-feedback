@@ -13,6 +13,7 @@ import Admin from '../Admin/Admin';
 
 class App extends Component {
 
+  //Posts feedback to the database. Uses reducer data to fill object. 
   addFeedback = () => {
     Axios({
       method: 'POST',
@@ -31,6 +32,7 @@ class App extends Component {
     })
   }
 
+  //Gets feedback from the database to display on the admin page.
   getFeedback = () => {
     Axios({
       method: 'GET',
@@ -45,6 +47,7 @@ class App extends Component {
     })
   }
 
+  //Deletes feedback on admin page based on database id
   deleteFeedback = (id) => {
     Axios({
       method: 'DELETE',
@@ -57,6 +60,7 @@ class App extends Component {
     })
   }
 
+  //Updates flag column in database via admin page
   flagFeedback = (id) => {
     Axios({
       method: 'PUT',

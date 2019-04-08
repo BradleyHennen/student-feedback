@@ -23,6 +23,7 @@ class Feeling extends Component {
         selectedValue: "",
     }
 
+    //Adds users feeling score to reducer and changes page on click
     nextPageLoad = () => {
         let number = Number(this.state.selectedValue)
         const action = {type: 'ADD_FEELING', payload: number}
@@ -31,14 +32,11 @@ class Feeling extends Component {
 
     }
 
+    //Updates state to reflect users input
     handleChange = (event) => {
         this.setState({
             selectedValue: event.target.value,
         })
-    }
-
-    componentDidMount = () => {
-        this.props.dispatch({type: 'FLIP_BUTTON', payload: true})
     }
 
     render() {

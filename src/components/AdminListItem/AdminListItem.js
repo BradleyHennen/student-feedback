@@ -16,15 +16,18 @@ const styles = theme => ({
 class Admin extends Component {
    
 
+    //Deletes data from database on click
     handleClickDelete = (event) => {    
         this.props.deleteFeedback(event.target.value);
     }
 
+    //Flags data from database on click
     handleClickFlag = (event) => {
         this.props.flagFeedback(event.target.value);
        
     }
 
+    //Toggles button from clear to mark flagged
     flipFlagButton = () => {
         console.log('Flagged', this.props.feedback.flagged);
         
@@ -43,6 +46,7 @@ class Admin extends Component {
         }
     }
 
+    //Updates data boolean to be more readable on table
     flagRender = () => {
         if (this.props.feedback.flagged === true) {
         return ('Attention Needed');

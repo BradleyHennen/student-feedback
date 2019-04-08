@@ -26,6 +26,7 @@ class Support extends Component {
         selectedValue: "",
     }
 
+    //Adds users support score to reducer and changes page on click 
     nextPageLoad = () => {
         let number = Number(this.state.selectedValue)
         const action = {type: 'ADD_SUPPORT', payload: number}
@@ -33,6 +34,7 @@ class Support extends Component {
         this.props.history.push('/comment')
     }
 
+    //Updates state to reflect users input
     handleChange = (event) => {
         this.setState({
             selectedValue: event.target.value,

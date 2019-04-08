@@ -27,15 +27,22 @@ class Review extends Component {
         spacing: '16',
     };
 
-    flip = () => {
+    //Flips button to be functional when review is complete
+    flip = (reload) => {
         console.log('flip', this.props.reduxState.reviewComplete);
-        if (this.props.reduxState.reviewComplete === true) {
+        if (this.props.reduxState.reviewComplete === true || reload === true) {
             return <Button disabled variant="contained" color="primary">Incomplete</Button>;
         } else if (this.props.reduxState.reviewComplete === false) {
-            return <Button onClick={this.addFeedback} variant="contained" color="primary">Complete</Button>;
-        }
+            return  <Button 
+                        onClick={this.addFeedback} 
+                        variant="contained" 
+                        color="primary">
+                        Complete
+                    </Button>;
+        } 
     }
 
+    //Adds feedback to database and changes view
     addFeedback = () => {
         this.props.history.push('/completed-page');
         this.props.addFeedback();
