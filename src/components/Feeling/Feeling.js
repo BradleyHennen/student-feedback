@@ -37,6 +37,10 @@ class Feeling extends Component {
         })
     }
 
+    componentDidMount = () => {
+        this.props.dispatch({type: 'FLIP_BUTTON', payload: true})
+    }
+
     render() {
         const { classes } = this.props;
 

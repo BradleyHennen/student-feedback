@@ -52,8 +52,10 @@ const commentsReducer = (state = [], action) => {
 }
 
 const reviewComplete = (state = true, action) => {
-   if (action.payload === false) {
-      return state = action.payload;
+   if(action.type === 'FLIP_BUTTON') {
+      if (action.payload === false) {
+         return state = action.payload;
+      }
    }
    return state;
 }

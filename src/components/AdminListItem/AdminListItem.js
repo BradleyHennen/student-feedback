@@ -47,7 +47,7 @@ class Admin extends Component {
         if (this.props.feedback.flagged === true) {
         return ('Attention Needed');
         } else {
-            return ('Check Mark')
+            return ('')
         }
     }
 
