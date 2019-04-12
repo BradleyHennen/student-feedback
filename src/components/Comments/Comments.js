@@ -56,7 +56,7 @@ class Comment extends Component {
             <section>
                 <Header />
                 <Paper>
-                    <Typography variant="h4" gutterBottom>Any comments you want to leave?</Typography>
+                    <Typography color="primary" variant="h4" gutterBottom>Any comments you want to leave?</Typography>
                     <TextField
                         id="standard-multiline-flexible"
                         label="Comment"
@@ -70,7 +70,7 @@ class Comment extends Component {
                     <Button
                         onClick={this.nextPageLoad}
                         variant="contained"
-                        color="primary"
+                        color="secondary.main"
                         className={classes.button}>
                         NEXT
                 </Button>

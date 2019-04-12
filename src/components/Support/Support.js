@@ -57,6 +57,7 @@ class Support extends Component {
                         checked={this.state.selectedValue === "1"}
                         onChange={this.handleChange}
                         value="1"
+                        color="primary"
                         name="radio-button-1"
                     />
                     <span>1</span>

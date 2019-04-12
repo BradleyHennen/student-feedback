@@ -3,6 +3,8 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 import './App.css';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import theme from './theme';
 import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
 import Support from '../Support/Support';
@@ -79,6 +81,7 @@ class App extends Component {
 
   render() {
     return (
+      <MuiThemeProvider theme={theme}>
       <Router>
         <div className="App">
           <Route exact path='/' component={Feeling} />
@@ -99,8 +102,8 @@ class App extends Component {
           />
 
         </div>
-
       </Router>
+      </MuiThemeProvider>
     );
   }
 }
